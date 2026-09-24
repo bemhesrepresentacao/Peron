@@ -2299,6 +2299,94 @@ equipamentos pesados, 80W90 e 85W140.</p>
             renderProducts('todos');
         });
     </script>
+    <div id="updateNotice" class="update-notice">
+    <div class="update-notice-content">
+        <button onclick="closeUpdateNotice()" class="close-update">
+            &times;
+        </button>
+
+        <h3>🚀 Site atualizado!</h3>
+
+        <p>
+            Temos novidades no Peron Representações.
+            Confira os novos produtos e informações.
+        </p>
+
+        <button onclick="closeUpdateNotice()" class="update-button">
+            Conferir novidades
+        </button>
+    </div>
+</div>
+
+<style>
+.update-notice {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.update-notice-content {
+    position: relative;
+    max-width: 420px;
+    width: 100%;
+    background: #0F172A;
+    color: #F8FAFC;
+    padding: 30px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+.update-notice-content h3 {
+    color: #22C55E;
+    margin-top: 0;
+}
+
+.close-update {
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    background: transparent;
+    border: 0;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.update-button {
+    background: #22C55E;
+    color: white;
+    border: 0;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+</style>
+
+<script>
+const versaoAtual = "2026-09-24";
+
+function verificarAtualizacao() {
+    const ultimaVersao = localStorage.getItem("versaoSiteMarcao");
+
+    if (ultimaVersao !== versaoAtual) {
+        document.getElementById("updateNotice").style.display = "flex";
+    }
+}
+
+function closeUpdateNotice() {
+    document.getElementById("updateNotice").style.display = "none";
+    localStorage.setItem("versaoSiteMarcao", versaoAtual);
+}
+
+document.addEventListener("DOMContentLoaded", verificarAtualizacao);
+</script>
 
 </body>
 
